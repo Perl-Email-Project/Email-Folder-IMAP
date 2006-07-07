@@ -1,9 +1,8 @@
 package Email::Folder::IMAP;
-# $Id: IMAP.pm,v 1.2 2004/08/18 00:34:53 cwest Exp $
 use strict;
 
 use vars qw[$VERSION $IMAP];
-$VERSION   = sprintf "%d.%02d", split m/\./, (qw$Revision: 1.2 $)[1];
+$VERSION   = '1.21';
 $IMAP    ||= 'Net::IMAP::Simple';
 
 use base qw[Email::Folder::Reader];

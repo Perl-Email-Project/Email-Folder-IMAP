@@ -8,7 +8,7 @@ WriteMakefile (
                                  'Test::More'             => '0.47',
                                  'Email::FolderType::Net' => '',
                                  'Email::Folder::Reader'  => '',
-                                 'Net::IMAP::Simple'      => '',
+                                 'Net::IMAP::Simple'      => '0.95', # :port
                                  'URI::imap'              => '',
                                 },
                VERSION_FROM  => 'lib/Email/Folder/IMAP.pm',
