@@ -1,0 +1,49 @@
+NAME
+    Email::Folder::IMAP - Email::Folder Access to IMAP Folders
+
+SYNOPSIS
+      use Email::Folder;
+  
+      my $folder = Email::Folder->new('imap://example.com'); # read INBOX
+  
+      print $_->header('Subject') for $folder->messages;
+
+DESCRIPTION
+    This software adds IMAP functionality to Email::Folder. Its interface is
+    identical to the other Email::Folder::Reader subclasses.
+
+  Parameters
+    "username" and "password" parameters may be sent to "new()". If used,
+    they override any user info passed in the connection URI.
+
+  Folder Specification
+    Folders are specified using a simplified form of the IMAP URL Scheme
+    detailed in RFC 2192. Not all of that specification applies. Here are a
+    few examples.
+
+    Selecting the INBOX.
+
+      http://foo.com
+
+    Selecting the INBOX using URI based authentication. Remember that the
+    "username" and "password" parameters passed to "new()" will override
+    anything set in the URI.
+
+      http://user:pass@foo.com
+
+    Selecting the p5p list.
+
+      http://foo.com/perl/perl5-porters
+
+SEE ALSO
+    Email::Folder, Email::Folder::Reader, Email::FolderType::Net, URI::imap,
+    Net::IMAP::Simple.
+
+AUTHOR
+    Casey West, <casey@geeknest.com>.
+
+COPYRIGHT
+      Copyright (c) 2004 Casey West.  All rights reserved.
+      This module is free software; you can redistribute it and/or modify it
+      under the same terms as Perl itself.
+
