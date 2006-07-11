@@ -2,7 +2,7 @@ package Email::Folder::IMAP;
 use strict;
 
 use vars qw[$VERSION $IMAP];
-$VERSION   = '1.21';
+$VERSION   = '1.10';
 $IMAP    ||= 'Net::IMAP::Simple';
 
 use base qw[Email::Folder::Reader];
