@@ -1,11 +1,12 @@
-1.10    2006-07-11
+1.101     2007-03-22
+          fix major documentation gaffe
+          packaging improvements
 
-  - require newer Net::IMAP::Simple to allow port numbers
+1.10      2006-07-11
+          require newer Net::IMAP::Simple to allow port numbers
 
-1.02    2004-08-17
+1.02      2004-08-17
+          Synopsis screwup.
 
-  - Synopsis screwup.
-
-1.01    2004-08-07
-
-  - Initial version.
+1.01      2004-08-07
+          Initial version.

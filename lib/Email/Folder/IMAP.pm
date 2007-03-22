@@ -2,7 +2,7 @@ package Email::Folder::IMAP;
 use strict;
 
 use vars qw[$VERSION $IMAP];
-$VERSION   = '1.10';
+$VERSION   = '1.101';
 $IMAP    ||= 'Net::IMAP::Simple';
 
 use base qw[Email::Folder::Reader];
@@ -82,17 +82,17 @@ are a few examples.
 
 Selecting the INBOX.
 
-  http://foo.com
+  imap://foo.com
 
 Selecting the INBOX using URI based authentication. Remember that the
 C<username> and C<password> parameters passed to C<new()> will override
 anything set in the URI.
 
-  http://user:pass@foo.com
+  imap://user:pass@foo.com
 
 Selecting the p5p list.
 
-  http://foo.com/perl/perl5-porters
+  imap://foo.com/perl/perl5-porters
 
 =head1 SEE ALSO
 
@@ -101,6 +101,12 @@ L<Email::Folder::Reader>,
 L<Email::FolderType::Net>,
 L<URI::imap>,
 L<Net::IMAP::Simple>.
+
+=head1 PERL EMAIL PROJECT
+
+This module is maintained by the Perl Email Project.
+
+L<http://emailproject.perl.org/wiki/Email::Folder::IMAP>
 
 =head1 AUTHOR
 
