@@ -1,3 +1,6 @@
+1.102     2007-04-01
+          avoid use of package variables for configuration; seriously, guys
+
 1.101     2007-03-22
           fix major documentation gaffe
           packaging improvements

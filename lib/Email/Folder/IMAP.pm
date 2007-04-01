@@ -1,49 +1,52 @@
 package Email::Folder::IMAP;
 use strict;
 
-use vars qw[$VERSION $IMAP];
-$VERSION   = '1.101';
-$IMAP    ||= 'Net::IMAP::Simple';
+use vars qw[$VERSION];
+$VERSION = '1.102';
 
 use base qw[Email::Folder::Reader];
 use Net::IMAP::Simple;
 use URI;
 
+sub _imap_class {
+  'Net::IMAP::Simple';
+}
+
 sub _uri {
-    my $self = shift;
-    return $self->{_uri} ||= URI->new($self->{_file});
+  my $self = shift;
+  return $self->{_uri} ||= URI->new($self->{_file});
 }
 
 sub _server {
-    my $self = shift;
-    return $self->{_server} if $self->{_server};
+  my $self = shift;
+  return $self->{_server} if $self->{_server};
 
-    my $uri = $self->_uri;
+  my $uri = $self->_uri;
 
-    my $host   = $uri->host_port;
-    my $server = $IMAP->new( $host );
+  my $host   = $uri->host_port;
+  my $server = $self->_imap_class->new($host);
 
-    my ($user, $pass) = @{$self}{qw[username password]};
-    ($user, $pass) = split ':', $uri->userinfo, 2 unless $user;
+  my ($user, $pass) = @{$self}{qw[username password]};
+  ($user, $pass) = split ':', $uri->userinfo, 2 unless $user;
 
-    $server->login($user, $pass) if $user;
-    
-    my $box = substr $uri->path, 1;
-    $server->select($box) if $box;
-    
-    $self->{_next} = 1;
-    return $self->{_server} = $server;
+  $server->login($user, $pass) if $user;
+
+  my $box = substr $uri->path, 1;
+  $server->select($box) if $box;
+
+  $self->{_next} = 1;
+  return $self->{_server} = $server;
 }
 
 sub next_message {
-    my $self = shift;
-    my $message = $self->_server->get($self->{_next});
-    if ( $message ) {
-        ++$self->{_next};
-        return join '', @{$message};
-    }
-    $self->{_next} = 1;
-    return;
+  my $self    = shift;
+  my $message = $self->_server->get($self->{_next});
+  if ($message) {
+    ++$self->{_next};
+    return join '', @{$message};
+  }
+  $self->{_next} = 1;
+  return;
 }
 
 1;
