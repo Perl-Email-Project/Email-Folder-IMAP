@@ -1,11 +1,12 @@
-package Email::Folder::IMAP;
 use strict;
+use warnings;
+package Email::Folder::IMAP;
+# ABSTRACT: Email::Folder Access to IMAP Folders
 
-use vars qw[$VERSION];
-$VERSION = '1.102';
+our $VERSION = '1.102';
 
-use base qw[Email::Folder::Reader];
-use Net::IMAP::Simple;
+use parent qw[Email::Folder::Reader];
+use Net::IMAP::Simple 0.95; # :port support
 use URI;
 
 sub _imap_class {
@@ -50,12 +51,6 @@ sub next_message {
 }
 
 1;
-
-__END__
-
-=head1 NAME
-
-Email::Folder::IMAP - Email::Folder Access to IMAP Folders
 
 =head1 SYNOPSIS
 
@@ -104,21 +99,3 @@ L<Email::Folder::Reader>,
 L<Email::FolderType::Net>,
 L<URI::imap>,
 L<Net::IMAP::Simple>.
-
-=head1 PERL EMAIL PROJECT
-
-This module is maintained by the Perl Email Project.
-
-L<http://emailproject.perl.org/wiki/Email::Folder::IMAP>
-
-=head1 AUTHOR
-
-Casey West, <F<casey@geeknest.com>>.
-
-=head1 COPYRIGHT
-
-  Copyright (c) 2004 Casey West.  All rights reserved.
-  This module is free software; you can redistribute it and/or modify it
-  under the same terms as Perl itself.
-
-=cut
