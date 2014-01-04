@@ -3,8 +3,6 @@ use warnings;
 package Email::Folder::IMAP;
 # ABSTRACT: Email::Folder Access to IMAP Folders
 
-our $VERSION = '1.102';
-
 use parent qw[Email::Folder::Reader];
 use Net::IMAP::Simple 0.95; # :port support
 use URI;
